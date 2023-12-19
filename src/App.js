@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Stayl from './App.module.css';
+import Main from './components/main/main';
+import Catalog from './components/catalog/catalog';
+import CardPage from './components/catalog/cardPage/cardPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter >
+    <div className={Stayl.app}>
+      <nav className={Stayl.nav}>
+        <Link className={Stayl.link} to="./main">Главная</Link>
+        <Link className={Stayl.link} to="./catalog">каталог</Link>
+      </nav>
+      <Routes>
+        <Route path='/main' element={<Main />} />
+        <Route path='/catalog' element={<Catalog />} />
+        <Route path='/catalog/:id' element={<CardPage />}/>
+      </Routes>
+      
+
+
+      
     </div>
+    </BrowserRouter>
   );
 }
 
